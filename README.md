@@ -17,3 +17,19 @@
 - HTTPs
 - Tree Shaking - Remove unused code
 - Different dev and prod bundle
+
+
+/*
+Header -
+- Logo
+- Nav Items
+Body - 
+- Search
+- Resturant Container
+- Resturant Card
+Footer - 
+- Copyright
+- Links
+- Address
+- Contact
+*/
