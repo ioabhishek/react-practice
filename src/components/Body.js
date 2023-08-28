@@ -1,6 +1,7 @@
-import ResturantCard from "./ResturantCard";
+import ResturantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 const Body = () => {
    // Locale state variable
@@ -8,7 +9,6 @@ const Body = () => {
    const [filteredRestaurants, setFilteredRestaurants] = useState([]);
 
    const [searchText, setSearchText] = useState("");
-   console.log("body rerendered");
 
    useEffect(() => {
       fetchData();
@@ -20,9 +20,9 @@ const Body = () => {
       );
 
       const json = await data.json();
-      console.log(
-         json.data.cards[2].card.card.gridElements.infoWithStyle.restaurants
-      );
+      // console.log(
+      //    json.data.cards[2].card.card.gridElements.infoWithStyle.restaurants
+      // );
 
       // optional chaining
       setlistOfRestaurants(
@@ -50,9 +50,6 @@ const Body = () => {
                />
                <button
                   onClick={() => {
-                     
-
-                     console.log(searchText);
                      const filteredRestaurant = listOfRestaurants.filter(
                         (res) => res.info.name.toLowerCase().includes(searchText.toLowerCase())
                      );
@@ -75,7 +72,7 @@ const Body = () => {
          </div>
          <div className="rest-container">
             {filteredRestaurants.map((resturant) => (
-               <ResturantCard key={resturant.info.id} resData={resturant} />
+               <Link to={"/restaurants/"+resturant.info.id} key={resturant.info.id}><ResturantCard resData={resturant} /></Link>
             ))}
          </div>
       </div>
