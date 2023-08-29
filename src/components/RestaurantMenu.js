@@ -9,7 +9,7 @@ const ResturantMenu = () => {
   const [resInfo, setResInfo] = useState(null)
 
   const  {resId} = useParams();
-  // console.log(resId)
+  console.log(resId)
 
   useEffect(()=> {
     fetchMenu();
@@ -26,7 +26,7 @@ const ResturantMenu = () => {
   const {name, cuisines, costForTwoMessage} = resInfo?.cards[0]?.card?.card?.info;
 
   const { itemCards } = resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card
-  // console.log(itemCards)
+  console.log(itemCards)
 
   return (
     <div className='menu'>
