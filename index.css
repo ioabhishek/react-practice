@@ -12,3 +12,6 @@
 .shimmer-card { border: 1px solid #999999; border-radius: 20px; padding: 15px; cursor: pointer; }
 .login-btn { padding: 10px 20px; cursor: pointer;}
 .filter { display: flex; align-items: center;}
+
+.acc_item {margin-bottom: 20px;}
+.acc_head { padding-bottom: 10px;}
