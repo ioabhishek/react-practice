@@ -1,14 +1,18 @@
 import React, { useState } from 'react'
 import ItemList from './ItemList'
 
-const RestaurantCategory = ({data}) => {
+const RestaurantCategory = ({data, showItems, setShowIndex}) => {
 
-   const [showItems, setShowItems] = useState(false);
+   // const [showItems, setShowItems] = useState(false);
+
+   // const [showItm, setShowItm] = useState(showItems)
    
    const handleClick = () => {
+      // console.log(showItems)
+      setShowIndex();
       // showItems === false ? setShowItems(true) : setShowItems(false);
       // toggle feature or called as shortcut 
-      setShowItems(!showItems)
+      // setShowItems(!showItems)
    }
 
    return (
