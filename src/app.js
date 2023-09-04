@@ -1,4 +1,4 @@
-import React, {lazy, Suspense} from "react";
+import React, {lazy, Suspense, useContext, useEffect, useState} from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -13,11 +13,22 @@ const Grocery = lazy(() => import("./components/Grocery"));
 const About = lazy(() => import("./components/About")); 
 
 const AppLayout = () => {
+   const [userInfo, setUserInfo] = useState();
+
+   useEffect(() => {
+      const data = {
+         name: "Abhishek"
+      }
+      setUserInfo(data.name)
+   }, [])
+
    return (
-      <div className="app">
-         <Header />
-         <Outlet/>
-      </div>
+      <UserContext.Provider>
+         <div className="app">
+            <Header />
+            <Outlet/>
+         </div>
+      </UserContext.Provider>
    );
 };
 
