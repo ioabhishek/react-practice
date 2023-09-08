@@ -1,8 +1,9 @@
 import ResturantCard, { withPromotedLabel } from "./RestaurantCard";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import userContext from "../utils/UserContext";
 
 const Body = () => {
   // Locale state variable
@@ -12,6 +13,8 @@ const Body = () => {
   const [searchText, setSearchText] = useState("");
 
   const RestaurantCardPromoted = withPromotedLabel(ResturantCard);
+
+  const {setUserName, loggedInUser} = useContext(userContext);
 
   useEffect(() => {
     fetchData();
@@ -38,6 +41,10 @@ const Body = () => {
 
   const onlineStatus = useOnlineStatus();
 
+  const handleContext = (e) => {
+    setUserName(e.target.value)
+  }
+
   if (onlineStatus === false) return <h1>Looks like you're offline !</h1>;
 
   return listOfRestaurants.length === 0 ? (
@@ -63,7 +70,6 @@ const Body = () => {
             Search
           </button>
         </div>
-
         <button
           className="filter-btn"
           onClick={() => {
@@ -74,6 +80,8 @@ const Body = () => {
           }}>
           Top Rated Resturants
         </button>
+
+        <input type="text" placeholder="username" value={loggedInUser} onChange={handleContext}/>
       </div>
       <div className="rest-container">
         {filteredRestaurants.map((resturant) => (
